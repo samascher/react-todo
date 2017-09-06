@@ -1,43 +1,38 @@
 import React, {Component} from 'react'
 
 class EditTodoForm extends Component {
-  constructor(){
+  constructor() {
     super()
     this.state = {
       updatedTodoBody: ''
     }
   }
-
-  onInputChange(event){
-    console.log('changing a todo!')
-    this.setState ({
+  onInputChange(event) {
+    this.setState({
       updatedTodoBody: event.target.value
     })
   }
-
-  onFormSubmit(event){
-    event.preventDefault()
-    console.log('edit todo form submitted')
-    this.props.onUpdateTodo(this.state.updatedTodoBody)
+  onFormSubmit(event) {
+    event.preventDefault();
+    this.props.onUpdateTodo(this.state.updatedTodoBody, this.props._id);
     this.setState({
       updatedTodoBody: ''
     })
   }
-
-  render(){
+  render() {
     return (
-      <div className='editTodoForm' data-todos-index={this.props.todo._id}>
+      <div className="editTodoForm" data-todos-index={this.props._id}>
         <form onSubmit={event => this.onFormSubmit(event)}>
           <input
-          onChange={event => this.onInputChange(event)}
-          placeholder='Write updated todo here'
-          type='text'
-          value={this.state.updatedTodoBody} />
-          <button type='submit'>Update Todo!</button>
+            onChange={event => this.onInputChange(event)}
+            placeholder="Write updated todo here..."
+            type="text"
+            value={this.state.updatedTodoBody} />
+          <button type="submit">Update Todo!</button>
         </form>
       </div>
-    )
+    );
   }
 }
 
-export default EditTodoForm
+export default EditTodoForm;
