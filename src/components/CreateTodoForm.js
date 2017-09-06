@@ -10,17 +10,17 @@ class CreateTodoForm extends Component {
   }
 
   onInputChange(event){
-    console.log('create todo input changed')
-    //event.target.value
+    this.setState ({
+      todo: event.target.value
+    })
   }
 
   onFormSubmit(event){
-    console.log('form submitted')
     event.preventDefault()
     let newTodo = this.state.todo
     this.props.createTodo(newTodo)
     this.setState({
-      todo: ''
+      todo: ""
     })
   }
 
