@@ -30,9 +30,10 @@ class TodoModel {
   static update(todo){
     let request = $.ajax({
       url: "https://super-crud.herokuapp.com/todos/" + todo._id,
-      method: 'UPDATE',
+      method: 'PUT',
       data: todo
     })
+    return request
   }
 
 }

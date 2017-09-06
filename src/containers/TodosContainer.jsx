@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import TodoModel from '../models/Todo'
 import TodoList from '../components/TodoList'
 import CreateTodoForm from '../components/CreateTodoForm'
+import EditTodoForm from '../components/EditTodoForm'
 
 class TodosContainer extends Component {
   constructor(){
@@ -46,6 +47,17 @@ class TodosContainer extends Component {
     })
   }
 
+  updateTodo(todo){
+    console.log('updating todo', todo)
+    TodoModel.update(todo).then((res) => {
+      let todos = this.state.todos.filter(
+          function(todo) {
+            return todo._id !== res._id
+          })
+          this.setState({todos})
+    })
+  }
+
   render(){
     return (
       <div className='todosContainer'>
@@ -54,6 +66,7 @@ class TodosContainer extends Component {
         <TodoList
           todos={this.state.todos}
           onDeleteTodo={this.deleteTodo.bind(this)} />
+          onUpdateTodo={this.updateTodo.bind(this)} />
       </div>
     )
   }

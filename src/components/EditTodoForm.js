@@ -2,9 +2,7 @@ import React, {Component} from 'react'
 
 class EditTodoForm extends Component {
   constructor(){
-    // use Component's constructor
     super()
-    // set initial state
     this.state = {
       updatedTodoBody: ''
     }
@@ -28,11 +26,11 @@ class EditTodoForm extends Component {
 
   render(){
     return (
-      <div className='editTodoForm'>
+      <div className='editTodoForm' data-todos-index={this.props.todo._id}>
         <form onSubmit={event => this.onFormSubmit(event)}>
           <input
           onChange={event => this.onInputChange(event)}
-          placeholder='Write updated todo here...'
+          placeholder='Write updated todo here'
           type='text'
           value={this.state.updatedTodoBody} />
           <button type='submit'>Update Todo!</button>
