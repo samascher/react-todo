@@ -7,7 +7,7 @@ class Todo extends Component {
         <span>{this.props.todo.body}</span>
         <span
           className='deleteButton'
-          onClick={() => this.props.onDeleteTodo(this.props.todo)}>
+          onClick={ () => this.props.onDeleteTodo(this.props.todo)}>
             (X)
         </span>
       </p>
